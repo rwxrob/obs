@@ -1,8 +1,6 @@
 package cmd
 
 import (
-	"fmt"
-
 	"github.com/andreykaipov/goobs"
 	"github.com/andreykaipov/goobs/api/requests/scenes"
 	Z "github.com/rwxrob/bonzai/z"
@@ -31,8 +29,7 @@ var Scene = &Z.Cmd{
 		defer client.Disconnect()
 
 		params := &scenes.SetCurrentProgramSceneParams{args[0]}
-		resp, _ := client.Scenes.SetCurrentProgramScene(params)
-		fmt.Println(resp)
-		return nil
+		_, err = client.Scenes.SetCurrentProgramScene(params)
+		return err
 	},
 }
